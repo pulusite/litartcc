@@ -5,10 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <groupId>...</groupId>
-    <artifactId>...</artifactId>
-    <version>...</version>
-    <packaging>...</packaging>
+    <groupId>litart</groupId>
+    <artifactId>litart.cc</artifactId>
+    <version>0.0.1</version>
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
         <groupId>redis.clients</groupId>
@@ -19,7 +19,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
     <!--<parent>...</parent>-->
