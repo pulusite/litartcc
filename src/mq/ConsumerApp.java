@@ -7,9 +7,6 @@ import org.apache.activemq.ActiveMQConnectionFactory;
 import javax.jms.*;
 /**
  * ConsumerApp 功能描述：ActiveMQ消费者实例
- *
- * @author RickyLee
- * @date 2016/11/3 13:27
  */
 public class ConsumerApp implements MessageListener {
     private static final String BROKER_URL = "tcp://127.0.0.1:61616";

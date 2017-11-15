@@ -9,8 +9,7 @@ import javax.jms.*;
 /**
  * Producer 功能描述：ActiveMQ生产者实例
  *
- * @author RickyLee
- * @date 2016/11/3 13:17
+ * http://127.0.0.1:8161/admin/
  */
 public class ProducerQueueApp {
 
