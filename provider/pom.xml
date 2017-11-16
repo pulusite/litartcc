@@ -2,17 +2,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>litart</groupId>
+        <artifactId>litart.cc</artifactId>
+        <version>0.0.1</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <!-- The Basics -->
-    <groupId>litart</groupId>
-    <artifactId>litart.cc</artifactId>
+    <artifactId>provider</artifactId>
     <version>0.0.1</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>provider</module>
-        <module>consumer</module>
-    </modules>
+    <packaging>war</packaging>
     <dependencies>
         <dependency>
         <groupId>redis.clients</groupId>
