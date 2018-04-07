@@ -8,7 +8,7 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
  */
 public class AopDemo {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:ApplicationContext.xml");
+        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:aop.xml");
         Target_ target_ = (Target_) applicationContext.getBean("aopDemo_");
         target_.tar1();
         System.out.println("----哈哈哈————");
