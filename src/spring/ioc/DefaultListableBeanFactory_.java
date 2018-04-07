@@ -10,7 +10,7 @@ import spring.ioc.Action;
  */
 public class DefaultListableBeanFactory_ {
     public static void main(String[] args) {
-        ClassPathResource classPathResource = new ClassPathResource("ApplicationContext.xml");
+        ClassPathResource classPathResource = new ClassPathResource("ioc.xml");
         DefaultListableBeanFactory defaultListableBeanFactory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader xmlBeanDefinitionReader = new XmlBeanDefinitionReader(defaultListableBeanFactory);
         xmlBeanDefinitionReader.loadBeanDefinitions(classPathResource);

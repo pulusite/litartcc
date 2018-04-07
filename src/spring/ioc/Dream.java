@@ -1,6 +1,5 @@
 package spring.ioc;
 
-import spring.ioc.Action;
 
 /**
  * Created by dongzhang on 5/26/17.

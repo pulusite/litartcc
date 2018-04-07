@@ -1,4 +1,4 @@
-package rpc;
+package dubbo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

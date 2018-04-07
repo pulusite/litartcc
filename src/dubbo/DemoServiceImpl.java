@@ -1,4 +1,4 @@
-package rpc;
+package dubbo;
 
 /**
  * Created by zhangdong on 2017/11/16.

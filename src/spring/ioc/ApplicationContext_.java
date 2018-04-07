@@ -9,7 +9,7 @@ import spring.ioc.Action;
  */
 public class ApplicationContext_ {
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:ApplicationContext.xml");
+        ApplicationContext applicationContext = new FileSystemXmlApplicationContext("classpath:ioc.xml");
         System.out.println("sum:"+applicationContext.getBeanDefinitionCount());
         ((Action)applicationContext.getBean("action")).execute();
     }
