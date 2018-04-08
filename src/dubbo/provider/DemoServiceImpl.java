@@ -1,3 +1,7 @@
+package dubbo.provider;
+
+import dubbo.DemoService;
+
 /**
  * Created by zhangdong on 2017/11/16.
  */
