@@ -15,7 +15,7 @@ public class CarLogger {
     }
 
     public void aroundRun(ProceedingJoinPoint joinpoint){
-        System.out.println("car is going to run");
+        System.out.println("car is going to run ");
         try {
             //调用被代理的对象的目标方法，本例中指向Car.go()方法
             joinpoint.proceed();

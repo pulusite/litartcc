@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd
+           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--    -->
+    <context:annotation-config />
+    <context:component-scan base-package="spring.*" />
+
+
+    <!-- jdbc.propertis Directory -->
+    <bean
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:jdbc.properties" />
+    </bean>
+
+    <bean id="myDataSource" destroy-method="close"
+              class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+
+    <!-- SqlSessionFactory -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="myDataSource" />
+    </bean>
+    <!-- ScanMapperFiles -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lixing.scm.test.mapper" />
+    </bean>
+
+
+
+    <!-- ================================事务相关控制=================================================    -->
+    <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="myDataSource"></property>
+    </bean>
+
+    <tx:advice id="userTxAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="delete*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception" no-rollback-for="java.lang.RuntimeException"/>
+            <tx:method name="insert*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.RuntimeException" />
+            <tx:method name="update*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception" />
+
+            <tx:method name="find*" propagation="SUPPORTS"/>
+            <tx:method name="get*" propagation="SUPPORTS"/>
+            <tx:method name="select*" propagation="SUPPORTS"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="pc" expression="execution(public * spring.transaction.*.*(..))" /> <!--把事务控制在Service层-->
+        <aop:advisor pointcut-ref="pc" advice-ref="userTxAdvice" />
+    </aop:config>
+
+
+    <!-- 以下为自定义Bean-->
+    <bean id="empDao" class="spring.transaction.EmpDaoImpl"
+          autowire="byName" />
+    <bean id="empService" class="spring.transaction.EmpServiceImpl"    autowire="byName"/>
+</beans>
