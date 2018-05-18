@@ -7,6 +7,10 @@ import org.apache.commons.codec.digest.DigestUtils;
  */
 public class WorkTester {
     public static void main(String[] args) {
+
+        /**
+         *   海关，aes加密
+         * **/
         String caller=null,appNo=null,privateKey=null,signature;
         StringBuilder signStr = new StringBuilder();
         signStr.append(caller)
